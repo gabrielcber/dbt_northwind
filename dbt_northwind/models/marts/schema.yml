@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: fct_orders
+    columns:
+      - name: order_sk
+        description: Primary key for fact table for orders
+        tests:
+            - unique
+            - not_null
+      - name: order_id
+        description: ID for each order
+        tests:
+            - not_null
+      - name: customer_fk
+        description: Customer foreign key
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_sk
+      - name: employee_fk
+        description: Employee foreign key
+        tests:
+          - relationships:
+              to: ref('dim_employees')
+              field: employee_sk
+      - name: product_fk
+        description: Product foreign key
+        tests:
+          - relationships:
+              to: ref('dim_products')
+              field: product_sk
+      - name: shipper_fk
+        description: Shipper foreign key
+        tests:
+          - relationships:
+              to: ref('dim_shippers')
+              field: shipper_sk
+
+  - name: dim_customers
+    columns:
+      - name: customer_sk
+        description: Primary key for dimension table for customers
+        tests:
+            - unique
+            - not_null
+
+  - name: dim_employees
+    columns:
+      - name: employee_sk
+        description: Primary key for dimension table for employees
+        tests:
+            - unique
+            - not_null
+
+  - name: dim_products
+    columns:
+      - name: product_sk
+        description: Primary key for dimension table for products
+        tests:
+            - unique
+            - not_null
+
+  - name: dim_shippers
+    columns:
+      - name: shipper_sk
+        description: Primary key for dimension table for shippers
+        tests:
+            - unique
+            - not_null
+
