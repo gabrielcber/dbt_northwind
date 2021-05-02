@@ -1,7 +1,6 @@
 with customers as (
     select 
-        Index
-        , customer_id
+        customer_id
         , company_name
         , contact_name
         , contact_title

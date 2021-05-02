@@ -1,6 +1,6 @@
 with territories as (
     select
-        territory_id
+        territory_id as territory_sk
         , territory_description
         , region_id
     from
